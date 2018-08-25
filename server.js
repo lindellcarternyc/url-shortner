@@ -54,5 +54,6 @@ app.post('/api/shorturl/new', (req, res) => {
 
 
 app.listen(port, function () {
+  console.clear()
   console.log('Node.js listening ...');
 });
