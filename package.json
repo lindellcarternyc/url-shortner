@@ -13,9 +13,6 @@
 		"cors": "^2.8.1",
 		"body-parser": "^1.15.2"
 	},
-	"engines": {
-		"node": "4.4.5"
-	},
 	"repository": {
 		"type": "git",
 		"url": "https://hyperdev.com/#!/project/welcome-project"
