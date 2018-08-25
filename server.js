@@ -1,8 +1,12 @@
 'use strict';
+require('dotenv').config()
 
+const dns = require('dns')
 var express = require('express');
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+
+mongoose.Promise = Promise
 
 const bodyParser = require('body-parser')
 
@@ -14,7 +18,13 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 /** this project needs a db !! **/ 
-// mongoose.connect(process.env.MONGOLAB_URI);
+mongoose.connect(process.env.MONGOLAB_URI);
+
+const URLSchema = new mongoose.Schema({
+  url: { type: String, required: true }
+})
+
+const URLModel = mongoose.model('UrlModel', URLSchema)
 
 app.use(cors());
 
@@ -29,9 +39,17 @@ app.get('/', function(req, res){
 });
 
 app.post('/api/shorturl/new', (req, res) => {
-  const { body } = req
-  console.log(body)
-  res.end()
+  const { body: url  } = req
+  console.log(url.url)
+
+  dns.lookup(url.url, (err, address) => {
+    if ( err ) {
+      console.log(err)
+       return res.json({error: "Invalid url"})
+    }
+    console.log(address)
+    res.end()
+  })
 })
 
 
