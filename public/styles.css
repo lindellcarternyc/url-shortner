@@ -1,0 +1,46 @@
+:root {
+  --backgroundColor: #698996;
+  --textColor: #3A3936;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: var(--textColor);
+	background-color: var(--backgroundColor);
+	text-align: center;
+  line-height: 1.4em;
+  padding-top: 2rem;
+}
+
+.container {
+  background-color: white;
+  padding: 1rem;
+  width: 100%; max-width: 800px;
+  margin: 1rem auto;
+  border-radius: 0.25rem;
+}
+
+input {
+  font-family: inherit;
+}
+
+input[type="url"] {
+  border: 2px solid var(--textColor);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+input[type="submit"] {
+  border: 0;
+  outline: 0;
+  margin-left: 0.5rem;
+  background-color: var(--backgroundColor);
+  color: white;
+  padding: 0.25rem 0.5rem;
+}
+
+#data-shorturl {
+  margin-top: 0.5rem;
+}
