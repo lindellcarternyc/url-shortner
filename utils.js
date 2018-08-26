@@ -21,12 +21,21 @@ const validateUrl = (url) => {
     return dns.lookup(hostname, err => {
       if ( err ) {
         console.log('dns lookup error')
-        return rej(error)
+        return rej(err)
       }
       return res(true)
     })
   })
 }
 
+const generateShortUrl = () => {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.@#'
+  const shortUrlChars = []
+  for ( let i = 0; i < 5; i++ ) {
+    const randomCharIdx = Math.floor(Math.random() * characters.length)
+    shortUrlChars.push(characters.charAt(randomCharIdx))
+  }
+  return shortUrlChars.join('')
+}
 
-module.exports = { validateUrl }
+module.exports = { validateUrl, generateShortUrl }
