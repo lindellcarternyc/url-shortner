@@ -68,6 +68,17 @@ app.post('/api/shorturl/new', async (req, res) => {
     })
 })
 
+app.get('/api/shorturl/:short_url', async (req, res) => {
+  const { params: { short_url } } = req
+  console.log('short_url', short_url)
+  const foundRecord = await  URLModel.findOne({short_url})
+  console.log('foundRecord', foundRecord)
+  if ( foundRecord === null ) {
+    res.redirect('/')
+  }
+  res.redirect(foundRecord.url)
+})
+
 
 app.listen(port, function () {
   console.clear()
